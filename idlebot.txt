@@ -1,0 +1,51 @@
+IdleBot (EidlBot?)
+
+A clicker or idle game.
+
+You are the botmaster. While your bots work away for you, you can spend your time designing better bots and counting your gold.
+
+You start with just a few blueprints and basic bot bits (or resource), from which you construct your first bots, an explorer bot and a gatherer bot.
+
+Your bots go out and periodically return (or when you order them to), and this allows you to construct bigger better bots, more equipment (better drills) and facilities (garage, radar). You will also need research bots to help you develop new blueprints for more and better stuff.
+
+
+Bot parts:
+A bot is composed of a shell and a frame
+A shell is decoration and dust covering
+
+a frame holds parts:
+sensors - like its head
+frame - like its skeliton
+ambulator - legs or wheels
+power supply - it need energy
+tractor - turns energy into motive power
+hopper - collects stuff in this - like its stomach
+armature - like its hands a gun or tools (picks up resources, chops, mashes, drills resources)
+scanner -  scan for resource
+command module - (must have one) allows you to command the bot (stop, return) and which resources to focus on
+armour - maybe your bot isn't hard enough
+
+A bot is constructed around a frame. Better frames make better bots, but a frame does nothing on its own.
+Add a power unit and a sensor array and now your bot can see, but it can't move.
+Add a tractor and a perambulator and now it can move, but it doesn't know what to do.
+Add a command module and now it can do things.
+
+raw materials can be processed in a refinery
+processed materials can be used in a machiner to make parts
+parts are needed to assemble a bot and other craft tools (ie: refinery)
+Charging units (for bots which do not have their own chargers ie: solar, on board fuel refinery etc)
+storage units (to store materials, parts, )
+
+
+
+
+
+-- Intro --
+Thank you for choosing BotCo. As a BotCo micro-manufactory company franchisee holder you have a shining career ahead.
+Please not you are currently 10,000 creds in debt to BoLoans Inc a BotCo subsiduary.
+You will find eveything you need in your BotCo company in a box package. From the comfort of your own bedroom or garage you now command a state of the art Robot mining and assembly facility which is currently being produced by our central print machine on the planet Zarg.
+Please choose a site for your facility from the list of available sites ....
+Please wait while your facility is delivered and deployed to the site you have picked ....
+Your facility is now ready.
+You have 1 basic refinery, 1 basic manufactory, 1 basic assembler and 1 basic laboratory. You have been provided with enough materials to produce the parts for a single resource gathering bot, which should be more than enough to get you going on your new venture.
+You are reminded your first repayment of x creds to BotCo is due in nnnn hours.

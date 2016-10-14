@@ -1,0 +1,32 @@
+Blueprint list (aka parts.coffee)
+frames
+scanners
+components
+
+
+
+blueprints buildings/unit spaces in buildings
+fabs/assembler
+labs
+refinery
+etc
+
+users list of known blueprints
+
+materials list  (harvested by bots)
+
+fabs (fabricators make parts from blueprints) [can fabs be linked to make production line?]
+
+labs (like fabricators labs make parts, but modify blueprint to try and get a new variant.)
+
+bots (composits of parts made by fabs)
+
+refineries (turn raw materials into usable materials)
+
+bulk is abstract concept of size and weight combined. Items with more bulk may be larger, or heavier than items with less bulk, exactly what an how is irrelevant
+
+systems timer - take a date timestamp (for an event like move bot), add delay (calc second timestamp). When system time is after delayTime then fire event again.
+
+With the move mechanic (bot moves 1 'away' from base each cycle), there is the possibility of establishing a second (and more) bases x units away from the first base. (would require a construction bot or bots)
+
+bots left outside rot.
