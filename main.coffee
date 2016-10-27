@@ -5,7 +5,7 @@ resources = require './resources'
 parts = require './parts'
 units = require './units' # buildings
 # import classes
-common = require './common_machine'
+common = require './commonMachine'
 refinery = require './refinery'
 fabricator = require './fabricator'
 Botron = require './botron'

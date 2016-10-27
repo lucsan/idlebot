@@ -9,10 +9,10 @@
 
 resources = require './resources'
 parts = require './parts'
-Buildings = require './buildings'
-common = require './common_machine'
+#Buildings = require './buildings'
+common = require './commonMachine'
 Refinery = require './refinery'
-Assembler = require './assembler'
+#Assembler = require './assembler'
 Mesenger = require './Mesenger'
 
 mesenger = new Mesenger.Mesenger()

@@ -1,7 +1,7 @@
 resources = require './resources'
 parts = require './parts'
 Buildings = require './buildings'
-common = require './common_machine'
+common = require './commonMachine'
 Refinery = require './refinery'
 Assembler = require './assembler'
 

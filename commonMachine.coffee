@@ -28,17 +28,7 @@ transform = (code, blueprint, machine) =>
     machine.resources[code] -= blueprint.uses[code]
     machine.resources[code] = machine.resources[code].toFixed(1)
 
-# Provide a decimal percentage and the chance it has happened is returned as true or false.
-chance = (decimal) =>
-    if (rand 1, 100) <= (100 * decimal) then true else false
-
-#
-rand = (min, max) =>
-    inrange = Math.floor(Math.random() * (max - min) + min)
-
 
 module.exports.loadMaterials = loadMaterials
 module.exports.refine = refine
 module.exports.assemble = assemble
-module.exports.chance = chance
-module.exports.rand = rand

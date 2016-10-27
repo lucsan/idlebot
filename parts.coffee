@@ -1,42 +1,48 @@
 
 
-sensors = {
-    'parts/sensors/sight/basic': {
+modules = {
+    'parts/modules/sensors/sight/basic': {
         name: "Basic Sight"
-        slot: 'frames/sensors'
+        #slot: 'frames/sensors'
         gene: 'vision'
         bulk: 1
         range: 10
         power: 0.2
         uses: {'parts/cpnt/lens/plastic': 1, 'parts/cpnt/curcuit/basic': 1} #combo
     }
-    'parts/sensors/sound': {
+    'parts/modules/sensors/sound': {
         name: "Basic Sound"
-        slot: 'frames/sensors'
+        #slot: 'frames/sensors'
         gene: 'audio'
         bulk: 1
         uses: {'cpnt/curcuit/basic': 1, 'cpnt/microphone/basic': 1}
     }
-    'parts/sensors/detect': {
+    'parts/modules/sensors/detect': {
         name: "Basic Metalergy"
         gene: 'detect'
         bulk: 1
         uses: {}
     }
-    'parts/sensors/radar': {
+    'parts/modules/sensors/radar': {
         name: "Basic radar"
         gene: 'radar'
         bulk: 1
         uses: {}
     }
-}
 
-armatures = {
-    'arms/grabber': {
+    'parts/modules/armatures/grabber': {
         name: "Basic grabing arm"
         gene: 'grabber'
         bulk: 1
         uses: {}
+    }
+
+    'parts/modules/hopper/basic/general': {
+        name: "Basic general purpurse hopper"
+        gene: 'general'
+        bulk: 1
+        uses: {'mats/iron': 1}
+        capacity: 10
     }
 }
 
@@ -46,7 +52,7 @@ components = { # combos
         bulk: 0.5
         uses: {'mats/plastic': 0.5}
     }
-    'cpnt/lens/glass': {
+    'parts/cpnt/lens/glass': {
         name: 'glass lens'
         bulk: 0.5
         uses: {'mats/glass': 0.5}
@@ -122,25 +128,44 @@ modifyComponents = () =>
 
 modifyFrames = () =>
     for code of frames
-        frames[code].sensors = []
-        frames[code].tractors = []
-        frames[code].powerUnits = []
-        frames[code].ambulators = []
-        frames[code].hoppers = []
-        frames[code].armatures = []
-        frames[code].commandModules = []
+        frames[code].parts = []
         frames[code].code = code
         frames[code].quality = 0
         frames[code].health = 100
     return frames
 
-modifySensors = () =>
-    for code of sensors
-        sensors[code].code = code
-        sensors[code].quality = 0
-        sensors[code].health = 100
-    return sensors
+modifyModules = () =>
+    for code of modules
+        infos = code.split('/')
+        modules[code].slot = 'frame/' + infos[1] + '/' + infos[2]
+        modules[code].code = code
+        modules[code].quality = 0
+        modules[code].health = 100
+    return modules
+
+# modifySensors = () =>
+#     for code of sensors
+#         sensors[code].slot = 'frame/sensors'
+#         sensors[code].code = code
+#         sensors[code].quality = 0
+#         sensors[code].health = 100
+#     return sensors
+#
+# modifyArmatures = () =>
+#     for code of armatures
+#         armatures[code].slot = 'frame/armatures'
+#         armatures[code].code = code
+#     return armatures
+#
+# modifyHoppers = () =>
+#     for code of hoppers
+#         hoppers[code].slot = 'frame/hoppers'
+#         hoppers[code].code = code
+#     return hoppers
 
 module.exports.frames = modifyFrames() #frames
 module.exports.components = modifyComponents() #components
-module.exports.sensors = modifySensors()
+module.exports.modules = modifyModules()
+#module.exports.sensors = modifySensors()
+#module.exports.armatures = modifyArmatures()
+#module.exports.hoppers = modifyHoppers()

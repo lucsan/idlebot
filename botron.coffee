@@ -1,5 +1,5 @@
-Move = require './move'
-resources = require './resources'
+#Move = require './move'
+#resources = require './resources'
 # contains bot data for a bot
 class Botron
     position = [] # this build only first position is used. [1,0,0]
@@ -22,22 +22,9 @@ class Botron
 
     addFrame: (@frame) =>
 
-    addSensor: (sensor) =>
-        if @frame.sensors.length == @frame.max.sensors then return
-        @frame.sensors.push sensor
+    #addArmature: (@armature) =>
 
-    getSensor: (code) =>
-        for sensor of @frame.sensors
-            if @frame.sensors[sensor]['code'] == code
-                return @frame.sensors[sensor]
-        return 'Unfound sensor ' + code
-
-        getSensors: () =>
-            return @frame.sensors
-
-    addArmature: (@armature) =>
-
-    addTractor: (@tractor) =>
+    #addTractor: (@tractor) =>
 
     systemsCheck: () =>
         # has all necessary parts and components (canMove, canScan, canHarvest)

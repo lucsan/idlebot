@@ -1,4 +1,4 @@
-common = require './common_machine'
+common = require './commonMachine'
 
 class Refinery
     @resources = null
@@ -11,7 +11,7 @@ class Refinery
 
     refine: (blueprint, amount) =>
         count = 0
-        amount = 100 if amount == undefined 
+        amount = 100 if amount == undefined
         while amount > count
             count += 1
             if !common.refine(blueprint, this)

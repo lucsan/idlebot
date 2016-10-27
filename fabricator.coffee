@@ -1,4 +1,4 @@
-common = require './common_machine'
+common = require './commonMachine'
 
 # change to Fabricator
 class Fabricator
