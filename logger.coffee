@@ -1,7 +1,16 @@
 fs = require 'fs'
 
+outputState = 'write'
+state = (state) =>
+    outputState = state
+
 info = (info) =>
     stamp = new Date()
-    fs.appendFile "dev.log", stamp.toISOString() + ': INFO: ' + info + "\r\n"
+    msg = stamp.toISOString() + ': INFO: ' + info + "\r\n"
+    if outputState == 'write'
+        fs.appendFile "dev.log", msg
+    if outputState = 'console'
+        console.log msg
 
 module.exports.info = info
+module.exports.state = state

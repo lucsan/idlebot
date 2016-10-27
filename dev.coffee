@@ -42,6 +42,7 @@ if harvestedResources.length > 0
 
 console.log '---------------------------------------------'
 console.log botone
+logger.state 'console'
 logger.info 'Built botone'
 console.log '---------------------------------------------'
 
