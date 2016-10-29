@@ -18,6 +18,7 @@ Mesenger = require './mesenger'
 #
 mesenger = new Mesenger.Mesenger
 
+
 logger = new Logger.Logger
 logger.state 'none'
 
