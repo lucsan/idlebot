@@ -8,15 +8,21 @@ Botron = require './botron'
 Move = require './move'
 BotActs = require './commonBotron'
 BotBits = require './commonFrame'
-logger = require './logger'
+Logger = require './logger'
+Mesenger = require './mesenger'
 # c = 0
 # for x in [0...20]
 #     if common.chance(0.5) then c += 1
 #
 # console.log c, ' of 20'
 #
-#
+mesenger = new Mesenger.Mesenger
+
+logger = new Logger.Logger
+logger.state 'none'
+
 botone = new Botron.Botron 'botty botone'
+botone.setLogger logger
 botone.addFrame parts.frames['parts/frames/basic']
 #console.log parts.sensors['parts/sensors/sight/basic']
 BotBits.loadPart botone, parts.modules['parts/modules/sensors/sight/basic']
@@ -41,10 +47,13 @@ if harvestedResources.length > 0
 
 
 console.log '---------------------------------------------'
-console.log botone
-logger.state 'console'
-logger.info 'Built botone'
+#console.log botone
+botone.inspect()
+#process.stdout.write 'xxxxxx'
+mesenger.add  'xxxxxxxxxxxxxxxx'
+mesenger.print()
 console.log '---------------------------------------------'
+console.log logger.getMsgs()
 
 
 #console.log botone.getSensor('parts/sensors/sight/basic')

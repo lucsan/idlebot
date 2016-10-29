@@ -14,7 +14,7 @@ scan = (botron, raws) =>
     return foundResources
 
 doScan = (sensor, raws, @foundResources) =>
-    console.log 'scanning with ', sensor
+    console.log  'scanning with ' + sensor
     # get raws which can be found by this sensor
     gene = sensor.gene
     for code of raws
@@ -44,7 +44,7 @@ harvest = (botron, foundResources) =>
     if !arms = canDo botron, 'frame/modules/armatures' then return
 
     #console.log foundResources
-    console.log 'harvesting with ', arms
+    console.log  'harvesting with ', arms
     harvestedResources = []
     for code of foundResources
         if foundResources[code].tools

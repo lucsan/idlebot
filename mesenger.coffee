@@ -1,16 +1,17 @@
 
-
 class Mesenger
     messages = null
 
     constructor: () ->
-        messages = []
+        @messages = []
 
     add: (Text) =>
-        messages.push Text
+        @messages.push Text
 
     print: () =>
-        console.log messages
+        for msg in @messages
+            process.stdout.write msg + '\n'
+        #console.log messages
 
     clear: () =>
         messages = []

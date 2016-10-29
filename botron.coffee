@@ -15,16 +15,9 @@ class Botron
         @state = 'off'
         @delay = 1
 
-    # move: (resources) =>
-    #     # check bot can move (has tractor, fuel, and ambulator)
-    #     @go = new Move.Move()
-    #     @go.move(resources, this)
+    setLogger: (@logger) =>
 
     addFrame: (@frame) =>
-
-    #addArmature: (@armature) =>
-
-    #addTractor: (@tractor) =>
 
     systemsCheck: () =>
         # has all necessary parts and components (canMove, canScan, canHarvest)
@@ -34,5 +27,13 @@ class Botron
 
     runningCheck: () =>
         #is still operational
+
+    inspect: () =>
+        for part in @frame.parts
+            p = JSON.stringify(part)
+            ps = p.split(',')
+            for s in ps
+                process.stdout.write s + '\n'
+            process.stdout.write '\n'
 
 module.exports.Botron = Botron

@@ -1,8 +1,8 @@
 # Common frame activities (load parts, remove parts)
-loadPart = (botron, part) =>
+module.exports.loadPart = (botron, part) =>
     # identify part
     slot = part.slot.split '/'
-    console.log slot
+    #console.log slot
     slot = slot[2]
     # check frame capacity for part
     capacity = botron.frame.max[slot]
@@ -13,30 +13,31 @@ loadPart = (botron, part) =>
     if holding == capacity then return #is full
     # if space, load part into frame
     botron.frame.parts.push part
-    console.log 'loaded ' + part.code + ' into bot ' + botron.name
+    botron.logger.info 'loaded - ' + part.code + ' into bot ' + botron.name
+    #console.log
 
 
 
-removePart = (botron, code) =>
+module.exports.removePart = (botron, code) =>
     # idenftyfy part
     index = 0
     for part in botron.frame.parts
         # see if it exisits in framel list
         if part.code == code
             # remove
-            console.log 'removed ' + code + ' from bot ' + botron.name
             botron.frame.parts.splice(index, 1)
+            botron.logger.info 'removed - ' + code + ' from bot ' + botron.name
             break
         index++
 
-listParts = (botron) =>
+module.exports.listParts = (botron) =>
     return botron.frame.parts
 
-loadHopper = (botron, resources) =>
+module.exports.loadHopper = (botron, resources) =>
 
 
 
-module.exports.loadPart = loadPart
-module.exports.removePart = removePart
-module.exports.listParts = listParts
-module.exports.loadHopper = loadHopper
+#module.exports.loadPart = loadPart
+#module.exports.removePart = removePart
+#module.exports.listParts = listParts
+#module.exports.loadHopper = loadHopper
