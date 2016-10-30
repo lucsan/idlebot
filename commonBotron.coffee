@@ -1,7 +1,6 @@
 # Common botron functions.
-
-
-scan = (botron, raws) =>
+# 
+module.exports.scan = (botron, raws) =>
     # check the bot can scan
     #if !sensors = canScan botron then return
     if !sensors = canDo botron, 'frame/modules/sensors' then return
@@ -9,12 +8,12 @@ scan = (botron, raws) =>
     # calculate what it can see for each sensors
     foundResources = []
     for sensor in sensors
-        doScan sensor, raws, foundResources
+        doScan sensor, raws, foundResources, botron
     # return list of found resources
     return foundResources
 
-doScan = (sensor, raws, @foundResources) =>
-    console.log  'scanning with ' + sensor
+doScan = (sensor, raws, @foundResources, botron) =>
+    process.logger.info botron.name + ' scanning with - ' + sensor.code
     # get raws which can be found by this sensor
     gene = sensor.gene
     for code of raws
@@ -24,9 +23,8 @@ doScan = (sensor, raws, @foundResources) =>
                     # use scan value (ie: vision: 0.8) to calculate chanch this resource is spotted.
                     raws[code].scanChance = raws[code].scan[type]
                     @foundResources.push raws[code]
+                    process.logger.info botron.name + ' scanned - ' + raws[code].scan[type] + ' ' +  code
     return @foundResources
-
-
 
 canDo = (botron, slotCode) =>
     things = []
@@ -37,14 +35,12 @@ canDo = (botron, slotCode) =>
     return things
 
 
-harvest = (botron, foundResources) =>
+module.exports.harvest = (botron, foundResources) =>
     # recieves a list of found (scaned) resources
     # check bots harvesting tools
-    # canHarvest
+    # canHarvest - has armatures - get list of armatures
     if !arms = canDo botron, 'frame/modules/armatures' then return
-
-    #console.log foundResources
-    console.log  'harvesting with ', arms
+    #console.log  'harvesting with \n', arms
     harvestedResources = []
     for code of foundResources
         if foundResources[code].tools
@@ -57,14 +53,10 @@ harvest = (botron, foundResources) =>
                         bulk = foundResources[code].bulk
                         foundResources[code].harvestAmount = bulk * harvestPercent
                         harvestedResources.push foundResources[code]
+                        process.logger.info botron.name + ' harvesting - with ' + tool + ', found - ' + foundResources[code].harvestAmount + ' ' + foundResources[code].name
                 #console.log tool
     if harvestedResources.length < 1 then return
     # return list of resources and amounts harvested
     return harvestedResources
 
-
 move = (botron) =>
-
-
-module.exports.scan = scan
-module.exports.harvest = harvest

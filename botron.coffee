@@ -2,7 +2,7 @@
 #resources = require './resources'
 # contains bot data for a bot
 class Botron
-    position = [] # this build only first position is used. [1,0,0]
+    position = [] # this build, only first position is used. [1,0,0]
     location = '' # in bay (loading, charging), outside
     state = null # on or off
     delay = null # cycle time for bot (ie: speed it moves at - therefore harvests at)

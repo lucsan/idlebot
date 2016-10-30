@@ -1,7 +1,8 @@
 resources = require './resources'
+common = require './common'
 parts = require './parts'
 Units = require './units' # buildings
-common = require './commonMachine'
+MachActs = require './commonMachine'
 Refinery = require './refinery'
 Fabricator = require './Fabricator'
 Botron = require './botron'
@@ -18,9 +19,13 @@ Mesenger = require './mesenger'
 #
 mesenger = new Mesenger.Mesenger
 
-
 logger = new Logger.Logger
 logger.state 'none'
+
+#console.log process.stdout
+
+process.mesenger = mesenger
+process.logger = logger
 
 botone = new Botron.Botron 'botty botone'
 botone.setLogger logger
@@ -44,13 +49,16 @@ if scanedResources.length > 0
 
 if harvestedResources.length > 0
     BotBits.loadHopper botone, harvestedResources
-    console.log harvestedResources
+    #console.log harvestedResources
 
 
 console.log '---------------------------------------------'
 #console.log botone
-botone.inspect()
-#process.stdout.write 'xxxxxx'
+
+#str = common.inspect botone.frame
+#process.stdout.write str
+
+
 mesenger.add  'xxxxxxxxxxxxxxxx'
 mesenger.print()
 console.log '---------------------------------------------'
