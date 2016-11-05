@@ -1,5 +1,8 @@
 # Common frame activities (load parts, remove parts)
 #
+module.exports.loadFrame = (botron, frame) =>
+    botron.addFrame frame
+
 module.exports.loadPart = (botron, part) =>
     # identify part
     slot = part.slot.split '/'
@@ -8,9 +11,8 @@ module.exports.loadPart = (botron, part) =>
     # check frame capacity for part
     capacity = botron.frame.max[slot]
     holding = 0
-    for item of botron.frame.parts
+    for i, item of botron.frame.parts
         holding++ if item.slot == part.slot
-    #holding = botron.frame[slot].length
     if holding == capacity then return #is full
     # if space, load part into frame
     botron.frame.parts.push part
@@ -32,3 +34,21 @@ module.exports.listParts = (botron) =>
     return botron.frame.parts
 
 module.exports.loadHopper = (botron, resources) =>
+    # find hoppers in frame
+    hopper = getHopper(botron)
+    console.log hopper.contains
+    for i, raw of resources
+        console.log raw
+
+
+    # check for space
+    # load hopper
+    #console.log botron.frame
+
+
+
+getHopper = (botron) =>
+    for part in botron.frame.parts
+        if part.slot == 'frame/modules/hopper'
+            return part
+    process.logger.error botron.name + 'No hopper'

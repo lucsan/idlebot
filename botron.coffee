@@ -19,6 +19,9 @@ class Botron
 
     addFrame: (@frame) =>
 
+    addShell: (@shell) =>
+        # bot can have a shell (body) - possibly armor
+
     systemsCheck: () =>
         # has all necessary parts and components (canMove, canScan, canHarvest)
         # caclulate bulk
@@ -28,7 +31,7 @@ class Botron
     runningCheck: () =>
         #is still operational
 
-    inspect: () =>
+    inspectFrame: () =>
         for part in @frame.parts
             p = JSON.stringify(part)
             ps = p.split(',')

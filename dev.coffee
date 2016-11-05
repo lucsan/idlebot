@@ -47,6 +47,8 @@ scanedResources = BotActs.scan botone, resources.raws
 if scanedResources.length > 0
     harvestedResources = BotActs.harvest botone, scanedResources
 
+console.log harvestedResources
+
 if harvestedResources.length > 0
     BotBits.loadHopper botone, harvestedResources
     #console.log harvestedResources

@@ -43,6 +43,7 @@ modules = {
         bulk: 1
         uses: {'mats/iron': 1}
         capacity: 10
+        contains: []
     }
 }
 

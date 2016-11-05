@@ -14,6 +14,9 @@ class Logger
     info: (info) =>
         @output @common() + 'INFO: ' + info
 
+    error: (info) =>
+        @output @common() + 'ERROR: ' + info
+
     common: () =>
         stamp = new Date()
         stamp.toISOString() + ': '
