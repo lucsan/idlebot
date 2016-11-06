@@ -5,7 +5,7 @@ Botron = require '.././botron'
 parts = require '../Data/./parts'
 resources = require '../Data/./resources'
 
-botron = new Botron.Botron('Test Bot')
+botron = new Botron('Test Bot')
 process.logger = {
     info: (msg) ->
     error: (msg) ->

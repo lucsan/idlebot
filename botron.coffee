@@ -1,7 +1,5 @@
-#Move = require './move'
-#resources = require './resources'
 # contains bot data for a bot
-class Botron
+module.exports = class Botron
     position = [] # this build, only first position is used. [1,0,0]
     location = '' # in bay (loading, charging), outside
     state = null # on or off
@@ -14,6 +12,7 @@ class Botron
         @position = [0,0,0]
         @state = 'off'
         @delay = 1
+        @name = 'Robo' if @name == undefined
 
     setLogger: (@logger) =>
 
@@ -38,5 +37,3 @@ class Botron
             for s in ps
                 process.stdout.write s + '\n'
             process.stdout.write '\n'
-
-module.exports.Botron = Botron

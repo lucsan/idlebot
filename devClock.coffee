@@ -80,6 +80,8 @@ func = () ->
 
 console.log 'Instructions:'
 console.log 'i for info'
+console.log 'br for bot run'
+console.log 'bs for bot stop'
 console.log 'x to exit'
 
 # Start the program

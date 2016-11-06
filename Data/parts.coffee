@@ -1,5 +1,4 @@
 
-
 modules = {
     'parts/modules/sensors/sight/basic': {
         name: "Basic Sight"
@@ -89,16 +88,9 @@ frames = {
             powerUnits: 2
             ambulators: 1
             hoppers: 10
-            armatures: 2
-            commandModules: 1
+            armatures: 2 # ie: grabber arm and a chainsaw
+            commandModules: 1 # tells the robot to consentrate on certain materials
         }
-        #sensors: 2
-        #tractors: 1
-        #powerUnits: 2
-        #ambulators: 1
-        #hoppers: 10
-        #armatures: 2 # ie: grabber arm and a chainsaw
-        #commandModules: 1 # tells the robot to consentrate on certain materials
     }
     'parts/frames/squalid': {
         name: ''
