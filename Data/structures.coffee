@@ -1,3 +1,10 @@
+compounds = {
+    'compounds/basic': {
+        name: 'Compound Zefnot'
+    }
+
+}
+
 buildings = {
     'structures/buildings/shed/command': {
         name: 'command shed'

@@ -2,6 +2,7 @@
 #franchise = require './franchise'
 #Buildings = require './buildings'
 
+common = require './common'
 structures = require './Data/structures' # buildings
 
 

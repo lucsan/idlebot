@@ -1,10 +1,11 @@
-buildings = require './buildings'
+id  buildings = require './buildings'
 structures = require './Data/structures' # buildings
 #user = require './user'
 botron = require './botron'
+common = require './common'
 
 fs = require 'fs'
-userName = 'Babo'
+
 #player = new user()
 #
 class User
@@ -85,12 +86,14 @@ loadPlayerBuildings = (player, playerData) =>
 
     #console.log compound.buildings[0].bays
 
-
+userName = 'Babo'
+userName = common.makeName()
 
 player = new User userName
 player = loadPlayerData(player, player.load())
 
 console.log player
+console.log player.compounds[0].buildings
 #player.delete()
 
 #     return newPlayer(player) if player.newPlayer == true
