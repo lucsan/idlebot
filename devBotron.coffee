@@ -5,11 +5,11 @@ parts = require './Data/parts'
 Units = require './Data/structures' # buildings
 
 MachActs = require './commonMachine'
-Refinery = require './refinery'
-Fabricator = require './Fabricator'
+#Refinery = require './refinery'
+#Fabricator = require './Fabricator'
 Botron = require './botron'
 Move = require './move'
-BotActs = require './commonBotron'
+#BotActs = require './commonBotron'
 BotBits = require './commonFrame'
 Logger = require './logger'
 Mesenger = require './mesenger'
@@ -30,7 +30,7 @@ process.mesenger = mesenger
 process.logger = logger
 
 botone = new Botron 'botty botone'
-botone.setLogger logger
+#botone.setLogger logger
 botone.addFrame parts.frames['parts/frames/basic']
 #console.log parts.sensors['parts/sensors/sight/basic']
 BotBits.loadPart botone, parts.modules['parts/modules/sensors/sight/basic']
@@ -44,10 +44,10 @@ BotBits.removePart botone, 'parts/modules/sensors/sight/basic'
 
 #console.log BotBits.listParts botone
 
-scanedResources = BotActs.scan botone, resources.raws
+scanedResources = Botron.scan botone, resources.raws
 #console.log scanedResources
 if scanedResources.length > 0
-    harvestedResources = BotActs.harvest botone, scanedResources
+    harvestedResources = Botron.harvest botone, scanedResources
 
 console.log harvestedResources
 
