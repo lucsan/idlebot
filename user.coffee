@@ -1,4 +1,5 @@
 module.exports = class User
+    name = ''
     compounds = []
     currentBuilding = {}
     botrons = []
@@ -6,40 +7,20 @@ module.exports = class User
         @botrons = []
         @compounds = []
 
-        # load user settings
-        # if no user settings (new game)
+module.exports.save = (user) =>
+    # save user and franchise to user file
+    fs = require 'fs'
+    fs.writeFileSync 'Users/' + user.name + '.user', JSON.stringify user
 
-    check: =>
-        # has user file
-        # has franchise
-        # count botrons
-    save: =>
-        # save user and franchise to user file
-        fs = require 'fs'
-        fs.writeFileSync 'Users/' + @name + '.user', JSON.stringify this
+module.exports.delete = (user) =>
+    fs = require 'fs'
+    fs.unlinkSync 'Users/' + user.name + '.user'
 
-    load: (name, buildings, botron) =>
-        #load user and franchise from user file
-        fs = require 'fs'
-        if !fs.existsSync 'Users/' + name + '.user'
-            @newPlayer name, buildings, botron
+module.exports.load = (name) =>
+    #load user and franchise from user file
+    fs = require 'fs'
+    if fs.existsSync 'Users/' + name + '.user'
+        playerFile = fs.readFileSync 'Users/' + name + '.user', 'utf8'
 
-        playerData = fs.readFileSync 'Users/' + name + '.user', 'utf8'
-        playerData = JSON.parse playerData
-        console.log playerData
-        # @name = playerData.name
-        # for i, robo in playerData.botrons
-        #     @botrons.push robo
-        # @franchise = playerData.franchise
-
-    # newPlayer: (name, buildings, botron) =>
-    #     parts = require './Data/parts'
-    #     structures = require './Data/structures'
-    #     @name = name
-    #     buildings.setBuilding structures.buildings['structures/buildings/shed']
-    #     buildings.setBay 'structures/buildings/shed', 'structures/shed/bay/storage'
-    #     @compounds = franchise
-    #     botron.addFrame parts.frames['parts/frames/basic']
-    #     @botrons.push botron
-        #
-        # @save()
+module.exports.loadDataIntoPlayer = (user, playerData) =>
+    user.botrons = playerData.botrons

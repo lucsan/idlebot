@@ -17,7 +17,23 @@ module.exports = class Botron
     addFrame: (@frame) =>
     addShell: (@shell) =>
 
-# Common botron functions.
+# botron methods
+module.exports.build = (botron) =>
+
+
+module.exports.newPlayerBuild = (botron, parts, config) =>
+    botron.addFrame parts.frames[config.defaults.botron.frame]
+    
+
+
+module.exports.rebuild = (botron, playerData) =>
+
+
+module.exports.loadFrame = (botron, frame) =>
+    botron.addFrame frame
+
+
+# botron Action functions.
 module.exports.scan = (botron, raws) =>
     # check the bot can scan
     #if !sensors = canScan botron then return
@@ -77,4 +93,4 @@ module.exports.harvest = (botron, foundResources) =>
     # return list of resources and amounts harvested
     return harvestedResources
 
-move = (botron) =>
+module.exports.move = (botron) =>

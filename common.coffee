@@ -20,32 +20,19 @@ module.exports.inspect = (thing) =>
 
 module.exports.makeName = (length) =>
     length = 6 if length == undefined
+    t = (Math.round length / 3) + 1
+    block = ''
+    while t -= 1
+        block += getConstonant() + getVowel() + getConstonant()
+    return block
+
+getVowel = =>
     vowels = ['a', 'e', 'i', 'o', 'u', 'y']
-    #fromCharCode()
-    #charCodeAt
-    vi = []
-    vi.push rand 1, 6
-    vi.push rand 1, 6
-    ci = []
-    ci.push rand 97, 122
-    ci.push rand 97, 122
-    ci.push rand 97, 122
-    ci.push rand 97, 122
+    vowels[rand 1, vowels.length]
 
-    l1 =  String.fromCharCode ci[0]
-    l2 =  vowels[vi[0]]
-    l3 =  String.fromCharCode ci[1]
-    l4 =  String.fromCharCode ci[2]
-    l5 =  vowels[vi[1]]
-    l6 =  String.fromCharCode ci[3]
-
-    # if c in vowels
-    #     console.log 'errer'
-    return l1 + l2 + l3 + l4 + l5 + l6
-
-
-
-
+getConstonant = =>
+    constonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z']
+    constonants[rand 1, constonants.length]
 
 rand = (min, max) =>
     inrange = Math.floor(Math.random() * (max - min) + min)

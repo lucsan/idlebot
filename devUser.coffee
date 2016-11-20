@@ -1,4 +1,4 @@
-id  buildings = require './buildings'
+buildings = require './buildings'
 structures = require './Data/structures' # buildings
 #user = require './user'
 botron = require './botron'
@@ -87,7 +87,7 @@ loadPlayerBuildings = (player, playerData) =>
     #console.log compound.buildings[0].bays
 
 userName = 'Babo'
-userName = common.makeName()
+#userName = common.makeName()
 
 player = new User userName
 player = loadPlayerData(player, player.load())

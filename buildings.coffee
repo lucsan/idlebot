@@ -15,7 +15,7 @@ class Building
     constructor: (@blueprint) ->
         for item, value of @blueprint
             @[item] = value
-        @name = common.makeName()
+        #@name = common.makeName()
 
 class Bay
     constructor: (@blueprint) ->
