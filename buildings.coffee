@@ -22,14 +22,19 @@ class Bay
         for item, value of @blueprint
             @[item] = value
 
-module.exports.setBuilding = (compound, building) =>
+module.exports.addBuildingToCompound = (compound, building) =>
     compound.buildings.push building
-    compound.currentBuilding = compound.buildings.length
+    compound.currentBuilding = compound.buildings.length - 1
 
-module.exports.setBay = (compound, buildingCode, bay) =>
-    for i, b of compound.buildings
-        if b.code == buildingCode
-            compound.buildings[i].bays.push bay if checkBuildingCapacity(b)
+module.exports.findBuildingsInCompound = (compound, code) =>
+    list = []
+    for building in compound.buildings
+        list.push building if building.code == code
+    return list
+
+
+module.exports.addBayToBuilding = (building, bay) =>
+    building.bays.push bay if checkBuildingCapacity(building)
 
 checkBuildingCapacity = (building) =>
     return true if building.max.bays > building.bays.length

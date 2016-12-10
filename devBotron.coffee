@@ -10,7 +10,7 @@ MachActs = require './commonMachine'
 Botron = require './botron'
 Move = require './move'
 #BotActs = require './commonBotron'
-frame = require './frame'
+#frame = require './frame'
 Logger = require './logger'
 Mesenger = require './mesenger'
 # c = 0
@@ -33,13 +33,13 @@ botone = new Botron 'botty botone'
 #botone.setLogger logger
 botone.addFrame parts.frames['parts/frames/basic']
 #console.log parts.sensors['parts/sensors/sight/basic']
-frame.loadPart botone, parts.modules['parts/modules/sensors/sight/basic']
-frame.loadPart botone, parts.modules['parts/modules/sensors/sight/basic']
-frame.loadPart botone, parts.modules['parts/modules/armatures/grabber']
-frame.loadPart botone, parts.modules['parts/modules/hopper/basic/general']
-frame.loadPart botone, parts.modules['parts/modules/hopper/basic/general']
+botone.loadPart botone, parts.modules['parts/modules/sensors/sight/basic']
+botron.loadPart botone, parts.modules['parts/modules/sensors/sight/basic']
+botron.loadPart botone, parts.modules['parts/modules/armatures/grabber']
+botron.loadPart botone, parts.modules['parts/modules/hopper/basic/general']
+botron.loadPart botone, parts.modules['parts/modules/hopper/basic/general']
 
-frame.removePart botone, 'parts/modules/sensors/sight/basic'
+botron.removePart botone, 'parts/modules/sensors/sight/basic'
 
 
 #console.log BotBits.listParts botone
@@ -52,7 +52,7 @@ if scanedResources.length > 0
 console.log harvestedResources
 
 if harvestedResources.length > 0
-    frame.loadHopper botone, harvestedResources
+    botron.loadHopper botone, harvestedResources
     #console.log harvestedResources
 
 

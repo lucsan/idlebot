@@ -5,8 +5,6 @@
 common = require './common'
 structures = require './Data/structures' # buildings
 
-
-
 class compound
     buildings = []
     currentBuilding = null
@@ -33,7 +31,7 @@ setBuilding = (compound, building) =>
 setBay = (compound, buildingCode, bay) =>
     for i, b of compound.buildings
         if b.code == buildingCode
-            compound.buildings[i].bays.push bay if checkBuildingCapacity(b)
+            compound.buildings[i].bays.push bay if checkBuildingCapacity b
 
 checkBuildingCapacity = (building) =>
     return true if building.max.bays > building.bays.length
@@ -51,7 +49,7 @@ stor = new bay structures.bays['structures/shed/bay/storage']
 shed = new building structures.buildings['structures/buildings/shed/command']
 comp = new compound
 
-setbuilding comp, shed
+setBuilding comp, shed
 setBay comp, 'structures/buildings/shed/command', rech
 setBay comp, 'structures/buildings/shed/command', stor
 setBay comp, 'structures/buildings/shed/command', stor
@@ -61,6 +59,8 @@ stbs = findBays shed, 'structures/shed/bay/storage'
 console.log comp
 
 console.log stbs
+
+
 
 # console.log  comp.buildings.length
 # console.log  comp.buildings[0].bays.length
