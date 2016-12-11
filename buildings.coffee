@@ -50,26 +50,7 @@ module.exports.findBays = (building, code) =>
 
 
 # Using this method (classes and functions in same file, imported with requires), classes must be exported
-# here. module.exports = class ClassName only works for 1 class per file
+# here. module.exports = class ClassName 
 module.exports.Compound = Compound
 module.exports.Building = Building
 module.exports.Bay = Bay
-
-# module.exports = class Building
-#     location = ''
-#     bays = {}
-#     constructor: (@blueprint) ->
-#         @bays = {}
-#
-#     setBay: (bay) =>
-#         @bays blueprint if !@bays[blueprint]
-        # rechargeBay = {}
-        # storageBay = {}
-        # loadingDock = {}
-        # equipmentBay = {}
-
-    # getRechargeBayCapacity: () =>
-    #     @blueprint.rechargeBay
-    #
-    # getStorageBayCapacity: () =>
-    #     @blueprint.storageBay

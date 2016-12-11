@@ -18,13 +18,12 @@ module.exports.inspect = (thing) =>
             s += thing[item] + '\n'
     return s
 
-module.exports.makeName = (length) =>
-    length = 6 if length == undefined
-    t = (Math.round length / 3) + 1
-    block = ''
-    while t -= 1
-        block += getConstonant() + getVowel() + getConstonant()
-    return block
+makeName = (length) =>
+    length = 2 if length == undefined
+    name = ''
+    for i in [1..length]
+        name += getConstonant() + getVowel() + getConstonant()
+    return name
 
 getVowel = =>
     vowels = ['a', 'e', 'i', 'o', 'u', 'y']
@@ -37,8 +36,14 @@ getConstonant = =>
 rand = (min, max) =>
     inrange = Math.floor(Math.random() * (max - min) + min)
 
+class Plan
+    constructor: (blueprint) ->
+        for item, value of blueprint
+            @[item] = value
+        @name = makeName() if @name == undefined
 
-
+module.exports.Plan = Plan
+module.exports.makeName = makeName
     # s = ''
     # for obj in thing
     #     console.log obj

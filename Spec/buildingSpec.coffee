@@ -7,9 +7,11 @@ describe "building", ->
     compound = {}
     shed = {}
 
+# Refactor building and bay to use plan.
+
     beforeEach ->
         compound = new buildings.Compound
-        shed = new buildings.Building structures.buildings['structures/buildings/shed/command']
+        shed = new common.Plan structures.buildings['structures/buildings/shed/command']
 
     it "is defined by structure.buildings", ->
         expect(shed.name).toEqual 'command shed'
@@ -24,20 +26,20 @@ describe "building", ->
         expect(list.length).toEqual 1
 
     it "can contain bays", ->
-        bay = new buildings.Bay structures.bays['structures/shed/bay/recharge']
+        bay = new common.Plan structures.bays['structures/shed/bay/recharge']
         buildings.addBayToBuilding shed, bay
         expect(shed.bays[0].code).toEqual 'structures/shed/bay/recharge'
 
     it "has a maximum of bays it can contain", ->
-        bay = new buildings.Bay structures.bays['structures/shed/bay/storage']
+        bay = new common.Plan structures.bays['structures/shed/bay/storage']
         buildings.addBayToBuilding shed, bay
         for number in [1..5]
-            bay = new buildings.Bay structures.bays['structures/shed/bay/recharge']
+            bay = new common.Plan structures.bays['structures/shed/bay/recharge']
             buildings.addBayToBuilding shed, bay
-        bay = new buildings.Bay structures.bays['structures/shed/bay/storage']
+        bay = new common.Plan structures.bays['structures/shed/bay/storage']
         buildings.addBayToBuilding shed, bay
         for number in [1..5]
-            bay = new buildings.Bay structures.bays['structures/shed/bay/recharge']
+            bay = new common.Plan structures.bays['structures/shed/bay/recharge']
             buildings.addBayToBuilding shed, bay
         expect(shed.bays.length).toEqual shed.max.bays
 
