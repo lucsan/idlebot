@@ -10,21 +10,21 @@ describe "common include", ->
 
     it "has a plan object for blueprints", ->
         blueprint = structures.buildings['structures/buildings/shed/basic']
-        plan = new common.Plan blueprint
+        plan = common.newPlan blueprint
         expect(plan.code.length).toBeGreaterThan 0
 
     it "can take a variety of blueprints", ->
         blueprint = parts.frames['parts/frames/basic']
-        frame = new common.Plan blueprint
+        frame = common.newPlan blueprint
         expect(frame.code.length).toBeGreaterThan 0
 
     it "auto generates a name for itself if it dosent have one", ->
         blueprint = parts.frames['parts/frames/basic']
-        frame = new common.Plan blueprint
+        frame = common.newPlan blueprint
         expect(frame.name).toEqual 'basic frame'
 
         blueprint = structures.bays['structures/shed/bay/recharge']
-        bay = new common.Plan blueprint
+        bay = common.newPlan blueprint
         expect(bay.name.length).toEqual 6
 
     it "has a makeName which can be called independently of plan", ->

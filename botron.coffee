@@ -1,5 +1,5 @@
-module.exports.loadFrame = (botron, frameBlueprint) =>
-    botron.frame = frameBlueprint
+module.exports.loadFrame = (botron, frame) =>
+    botron.frame = frame
 
-module.exports.loadModule = (botron, moduleBlueprint) =>
-    botron.frame.modules.push moduleBlueprint
+module.exports.loadModule = (botron, botronModule) =>
+    botron.frame.modules.push botronModule

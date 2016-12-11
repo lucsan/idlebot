@@ -42,6 +42,10 @@ class Plan
             @[item] = value
         @name = makeName() if @name == undefined
 
+newPlan = (blueprint) =>
+    new Plan blueprint
+
+module.exports.newPlan = newPlan
 module.exports.Plan = Plan
 module.exports.makeName = makeName
     # s = ''
