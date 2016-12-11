@@ -11,17 +11,6 @@ class Compound
         @currentBuilding = null
         @name = ''
 
-class Building
-    constructor: (@blueprint) ->
-        for item, value of @blueprint
-            @[item] = value
-        #@name = common.makeName()
-
-class Bay
-    constructor: (@blueprint) ->
-        for item, value of @blueprint
-            @[item] = value
-
 module.exports.addBuildingToCompound = (compound, building) =>
     compound.buildings.push building
     compound.currentBuilding = compound.buildings.length - 1
@@ -47,10 +36,6 @@ module.exports.findBays = (building, code) =>
     return a
 
 
-
-
 # Using this method (classes and functions in same file, imported with requires), classes must be exported
-# here. module.exports = class ClassName 
+# here. module.exports.className = exportName
 module.exports.Compound = Compound
-module.exports.Building = Building
-module.exports.Bay = Bay
