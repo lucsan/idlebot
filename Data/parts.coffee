@@ -1,4 +1,10 @@
-
+botrons = {
+    'parts/botron' : {
+        position: [0,0,0]
+        state: 'off'
+        delay: 1
+    }
+}
 modules = {
     'parts/modules/sensors/sight/basic': {
         name: "Basic Sight"
@@ -82,6 +88,7 @@ frames = {
         name: 'basic frame'
         desc: ''
         uses: {'mats/steel': 10, 'mats/plastic/1': 2} #combo
+        modules: []
         max: {
             sensors: 2
             tractors: 1
@@ -109,7 +116,12 @@ frames = {
     }
 }
 
-
+modifyBotrons = () =>
+    for code of botrons
+        botrons[code].code = code
+        botrons[code].quality = 0
+        botrons[code].health = 100
+    return botrons
 
 
 modifyComponents = () =>
@@ -156,9 +168,11 @@ modifyModules = () =>
 #         hoppers[code].code = code
 #     return hoppers
 
+module.exports.botrons = modifyBotrons() #frames
 module.exports.frames = modifyFrames() #frames
 module.exports.components = modifyComponents() #components
 module.exports.modules = modifyModules()
+
 #module.exports.sensors = modifySensors()
 #module.exports.armatures = modifyArmatures()
 #module.exports.hoppers = modifyHoppers()
