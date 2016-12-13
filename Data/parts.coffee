@@ -88,7 +88,7 @@ frames = {
         name: 'basic frame'
         desc: ''
         uses: {'mats/steel': 10, 'mats/plastic/1': 2} #combo
-        modules: []
+        #modules: []
         max: {
             sensors: 2
             tractors: 1
@@ -133,7 +133,7 @@ modifyComponents = () =>
 
 modifyFrames = () =>
     for code of frames
-        frames[code].parts = []
+        frames[code].modules = []
         frames[code].code = code
         frames[code].quality = 0
         frames[code].health = 100

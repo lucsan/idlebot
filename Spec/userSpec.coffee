@@ -1,6 +1,8 @@
 fs = require 'fs'
 user = require '.././user'
 botron = require '.././botron'
+common = require '.././common'
+parts = require '../Data/parts'
 #frame = require '.././frame'
 
 
@@ -11,7 +13,8 @@ describe "A user", ->
     #player = {}
     beforeEach ->
         player = new user 'TestBob'
-        srobo = new botron 'TestUserRobo'
+        srobo = common.newPlan parts.botrons['parts/botron']
+        srobo.name = 'TestUserRobo'
         #player = new user('TestBob')
 
     it "Is a player object", ->
@@ -44,15 +47,20 @@ describe "A user", ->
         user.loadDataIntoPlayer player, playerData
         expect(player.botrons.length).toEqual 1
 
-
-
-
     it "can save a player botron with modules", ->
-        #expect(player.botron.length).toEqual 1
+        botron.loadFrame srobo, common.newPlan parts.frames['parts/frames/basic']
+        botron.loadModule srobo, common.newPlan parts.modules['parts/modules/sensors/radar']
+        playerData = saveAndLoadPlayer srobo
+        expect(playerData.botrons[0].frame.modules[0].code).toEqual 'parts/modules/sensors/radar'
 
-        #console.log playerData
 
 
+    saveAndLoadPlayer = (botron) ->
+        player.botrons.push botron
+        user.save player
+        playerFile = user.load player.name
+        playerData = JSON.parse playerFile
+        return playerData
 
 #console.log srobo
 #console.log player

@@ -12,7 +12,7 @@ process.logger = {
     error: (msg) ->
     }
 
-describe "frame", ->
+xdescribe "frame", ->
     frobo = {}
 
     beforeEach ->
