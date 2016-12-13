@@ -1,6 +1,7 @@
 fs = require 'fs'
-botron = require '.././botron'
 parts = require '.././Data/parts'
+resources = require '.././Data/resources'
+botron = require '.././botron'
 common = require '.././common'
 
 describe "botron", ->
@@ -39,8 +40,18 @@ describe "botron", ->
 
     it "can only hold a specifed number of a particular type of module", ->
         botron.loadFrame bot, common.newPlan parts.frames['parts/frames/basic']
-        bot.frame.modules = []
         botron.loadModule bot, common.newPlan parts.modules['parts/modules/sensors/sight/basic']
         botron.loadModule bot, common.newPlan parts.modules['parts/modules/sensors/sight/basic']
         botron.loadModule bot, common.newPlan parts.modules['parts/modules/sensors/sight/basic']
         expect(bot.frame.modules.length).toEqual bot.frame.max.sensors
+
+    it "can not do a scan if it has not a sensor", ->
+        botron.loadFrame bot, common.newPlan parts.frames['parts/modules/armatures/grabber']
+        Scanedesources = botron.scan bot, resources.raws
+        expect(Scanedesources.length).toEqual 0
+
+    it "can do a scan if it has a sensor", ->
+        botron.loadFrame bot, common.newPlan parts.frames['parts/frames/basic']
+        botron.loadModule bot, common.newPlan parts.modules['parts/modules/sensors/sight/basic']
+        scanedResources = botron.scan bot, resources.raws
+        expect(scanedResources.length).toBeGreaterThan 0
