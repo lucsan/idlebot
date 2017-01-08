@@ -13,7 +13,7 @@ module.exports.loadModule = (botron, botronModule) =>
 
 module.exports.scan = (botron, rawResourcesList) ->
     return [] if botron.frame.modules.length < 1
-    sensors = canScan(botron)
+    sensors = canThing(botron, 'frame/modules/sensors')
     return [] if sensors.length < 1
     # check environmental availability (not yet implemented)
     # calculate what it can see for each sensors
@@ -23,10 +23,8 @@ module.exports.scan = (botron, rawResourcesList) ->
     # return list of found resources
     return foundResources
 
-
-
 doScan = (sensor, raws, @foundResources, botron) =>
-    process.logger.info botron.name + ' scanning with - ' + sensor.code
+    #process.logger.info botron.name + ' scanning with - ' + sensor.code
     # get raws which can be found by this sensor
     gene = sensor.gene
     for code of raws
@@ -36,13 +34,27 @@ doScan = (sensor, raws, @foundResources, botron) =>
                     # use scan value (ie: vision: 0.8) to calculate chanch this resource is spotted.
                     raws[code].scanChance = raws[code].scan[type]
                     @foundResources.push raws[code]
-                    process.logger.info botron.name + ' scanned - ' + raws[code].scan[type] + ' ' +  code
+                    #process.logger.info botron.name + ' scanned - ' + raws[code].scan[type] + ' ' +  code
     return @foundResources
 
-
-
-canScan = (botron) =>
+canThing = (botron, moduleCode) =>
     a = []
-    for i, modules of botron.frame.modules when modules.slot == 'frame/modules/sensors'
+    for i, modules of botron.frame.modules when modules.slot == moduleCode
         a.push modules
     return a
+
+module.exports.harvest = (botron, scanedResources) =>
+    return [] if botron.frame.modules.length < 1
+    armatures = canThing(botron, 'frame/modules/armatures')
+    return [] if armatures.length < 1
+    harvestedResources = []
+    for code of scanedResources
+        if scanedResources[code].tools
+            for tool of scanedResources[code].tools
+                for arm in armatures
+                    if arm.gene == tool
+                        harvestPercent = scanedResources[code].tools[tool]
+                        bulk = scanedResources[code].bulk
+                        scanedResources[code].harvestAmount = bulk * harvestPercent
+                        harvestedResources.push scanedResources[code]
+    return harvestedResources

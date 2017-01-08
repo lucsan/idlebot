@@ -5,15 +5,15 @@ common = require './common'
 # Data
 resources = require './Data/resources'
 parts = require './Data/parts'
-Units = require './Data/units' # buildings
+#Units = require './Data/units' # buildings
 # Classes and actions
 MachActs = require './commonMachine'
-Refinery = require './refinery'
-Fabricator = require './Fabricator'
+#Refinery = require './refinery'
+#Fabricator = require './Fabricator'
 Botron = require './botron'
 Move = require './move'
-BotActs = require './commonBotron'
-BotBits = require './commonFrame'
+#BotActs = require './commonBotron'
+#BotBits = require './commonFrame'
 Logger = require './logger'
 Mesenger = require './mesenger'
 Timer = require "./timer"
@@ -76,7 +76,9 @@ information = (inputLine) =>
     #console.log 'fnk'
 
 console.log 'Instructions:'
-console.log 'i for info'
+console.log 'i for info (display output)'
+console.log 'br turn bot on (bot run)'
+console.log 'bs stop bot'
 console.log 'x to exit'
 
 

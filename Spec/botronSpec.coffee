@@ -1,3 +1,4 @@
+# jasmine-node --coffee botronSpec.coffee
 fs = require 'fs'
 parts = require '.././Data/parts'
 resources = require '.././Data/resources'
@@ -55,3 +56,24 @@ describe "botron", ->
         botron.loadModule bot, common.newPlan parts.modules['parts/modules/sensors/sight/basic']
         scanedResources = botron.scan bot, resources.raws
         expect(scanedResources.length).toBeGreaterThan 0
+
+    it "can have a resource harvesting tool", ->
+        botron.loadFrame bot, common.newPlan parts.frames['parts/frames/basic']
+        botron.loadModule bot, common.newPlan parts.modules['parts/modules/armatures/grabber']
+        expect(bot.frame.modules[0].code).toEqual 'parts/modules/armatures/grabber'
+
+
+    it "can not harvest wtihout a harvesting tool", ->
+
+
+    it "can harvest resources it has scanned if it has a tool", ->
+        botron.loadFrame bot, common.newPlan parts.frames['parts/frames/basic']
+        botron.loadModule bot, common.newPlan parts.modules['parts/modules/sensors/sight/basic']
+        botron.loadModule bot, common.newPlan parts.modules['parts/modules/armatures/grabber']
+        scanedResources = botron.scan bot, resources.raws
+        console.log scanedResources
+        foundResources = botron.harvest bot, scanedResources
+        expect(foundResources.length).toBeGreaterThan 0
+        console.log foundResources
+        #
+    it "will harvest resources according to the best tool it has available", ->
