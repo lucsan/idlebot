@@ -33,6 +33,7 @@ doScan = (sensor, raws, @foundResources, botron) =>
                 if type == sensor.gene
                     # use scan value (ie: vision: 0.8) to calculate chanch this resource is spotted.
                     raws[code].scanChance = raws[code].scan[type]
+                    raws[code].code = code
                     @foundResources.push raws[code]
                     #process.logger.info botron.name + ' scanned - ' + raws[code].scan[type] + ' ' +  code
     return @foundResources
@@ -48,13 +49,32 @@ module.exports.harvest = (botron, scanedResources) =>
     armatures = canThing(botron, 'frame/modules/armatures')
     return [] if armatures.length < 1
     harvestedResources = []
-    for code of scanedResources
-        if scanedResources[code].tools
-            for tool of scanedResources[code].tools
+
+    for i of scanedResources
+        if scanedResources[i].tools
+            for tool of scanedResources[i].tools
                 for arm in armatures
                     if arm.gene == tool
-                        harvestPercent = scanedResources[code].tools[tool]
-                        bulk = scanedResources[code].bulk
-                        scanedResources[code].harvestAmount = bulk * harvestPercent
-                        harvestedResources.push scanedResources[code]
+                        harvest = []
+                        harvest.code = scanedResources[i].code
+                        #harvest.scanedResources = scanedResources[i]
+                        harvest.toolUsed = tool
+                        harvestPercent = scanedResources[i].tools[tool]
+                        harvest.harvestPercent = harvestPercent
+                        bulk = scanedResources[i].bulk
+                        harvest.bulk = scanedResources[i].bulk
+                        harvest.harvestAmount = bulk * harvestPercent
+                        harvestedResources.push harvest
     return harvestedResources
+
+
+
+
+module.exports.info = (botron) =>
+    name = botron.name
+    frame = botron.frame
+    #sensors = canThing(botron, 'frame/modules/sensors')
+    info  = "\nInfo: \n"
+    info += 'name :   ' + name + "\n"
+    info += 'frame:   ' + frame
+    #info += 'sensors: ' + sensors

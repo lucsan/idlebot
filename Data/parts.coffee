@@ -42,6 +42,13 @@ modules = {
         uses: {}
     }
 
+    'parts/modules/armatures/mower': {
+        name: "Basic mowing arm"
+        gene: 'mower'
+        bulk: 1
+        uses: {}
+    }
+
     'parts/modules/hopper/basic/general': {
         name: "Basic general purpurse hopper"
         gene: 'general'

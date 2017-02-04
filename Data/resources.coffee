@@ -41,7 +41,7 @@ raws = {
         name: 'pebble'
         scan: {'vision': 0.8, 'radar': 0.4}
         make: 'raws/stone'
-        tools: {'grabber': 0.5}
+        tools: {'grabber': 0.5, 'pick': 0.8, 'drill': 1.0}
         bulk: 1
     }
     'raws/iron/boulder': {
