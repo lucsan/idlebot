@@ -5,7 +5,7 @@ module.exports.loadFrame = (botron, frame) =>
 
 module.exports.loadModule = (botron, botronModule) =>
     slotCode = botronModule.slot.split('/')
-    max = botron.frame.max[slotCode[1]]
+    max = botron.frame.max[slotCode[0]]
     counter = 0
     counter++ for i, module of botron.frame.modules when module.slot is botronModule.slot
     if counter >= max then return
@@ -13,7 +13,7 @@ module.exports.loadModule = (botron, botronModule) =>
 
 module.exports.scan = (botron, rawResourcesList) ->
     return [] if botron.frame.modules.length < 1
-    sensors = getModulesByType botron, 'modules/sensors'
+    sensors = getModulesByType botron, 'sensors'
     #console.log sensors
     return [] if sensors.length < 1
     # check environmental availability (not yet implemented)
@@ -44,12 +44,12 @@ getModulesByType = (botron, moduleCode) =>
     a = []
     for i, modules of botron.frame.modules
         slots = modules.slot.split('/');
-        a.push modules if codes[1] == slots[1]
+        a.push modules if codes[0] == slots[0]
     return a
 
 module.exports.harvest = (botron, scanedResources) =>
     return [] if botron.frame.modules.length < 1
-    armatures = getModulesByType botron, 'modules/armatures'
+    armatures = getModulesByType botron, 'armatures'
     return [] if armatures.length < 1
     harvestedResources = []
 
@@ -71,7 +71,7 @@ module.exports.harvest = (botron, scanedResources) =>
 
 module.exports.loadHopper = (botron, foundResources) =>
     return if botron.frame.modules.length < 1
-    hoppers = getModulesByType botron, 'modules/hoppers'
+    hoppers = getModulesByType botron, 'hoppers'
     return if hoppers.length < 1
     for i, hopper of hoppers
         for j, resource of foundResources

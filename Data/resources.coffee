@@ -4,40 +4,40 @@ raws = {
         scan: {'vision': 0.1, 'seismic': 0.8}
         bulk: 1
     }
-    'raws/wood/log': {
+    'raws/woods/log': {
         name: 'log'
         scan: {'vision': 0.3, 'radar': 0.5}
-        make: 'raws/wood'
+        make: 'raws/woods/wood'
         tools: {'chainsaw': 1, 'axe': 0.2}
         bulk: 10
     }
-    'raws/wood/tree': {
+    'raws/woods/tree': {
         name: 'tree'
         scan: {'vision': 0.5, 'radar': 0.7}
-        make: 'raws/wood' # tree turns into wood
+        make: 'raws/woods/wood' # tree turns into wood at * bulk
         tools: {'chainsaw': 1, 'axe': 0.2} # tools you can use to harvest this material
         bulk: 100
     }
-    'raws/wood': {
+    'raws/woods/wood': {
         name: 'wood'
         scan: {'vision': 0.2, 'radar': 0.4}
-        make: 'raws/wood'
+        make: 'raws/woods/wood'
         bulk: 1
     }
-    'raws/wood/bush': {
+    'raws/woods/bush': {
         name: 'wood'
         scan: {'vision': 0.2, 'radar': 0.4}
-        make: 'raws/wood'
+        make: 'raws/woods/wood'
         bulk: 1
     }
-    'raws/grass': {
+    'raws/grasses': {
         name: 'grass'
         scan: {'vision': 0.8, 'radar': 0.4}
-        make: 'raws/fiber'
         tools: {'grabber': 0.4, 'scyth': 0.6, 'mower': 0.8}
         bulk: 1
     }
-    'raws/stone/pebble': {
+
+    'raws/stones/pebble': {
         name: 'pebble'
         scan: {'vision': 0.8, 'radar': 0.4}
         make: 'raws/stone'
@@ -47,15 +47,15 @@ raws = {
     'raws/iron/boulder': {
         name: 'iron boulder'
         scan: {'vision': 0.1, 'radar': 0.2, 'detect': 0.8}
-        make: 'raws/iron'
+        make: 'raws/iron/ore'
         bulk: 50
     }
-    'raws/iron': {
+    'raws/iron/ore': {
         name: 'iron'
         scan: {'vision': 0.1, 'radar': 0.2, 'detect': 0.8}
         bulk: 3
     }
-    'raws/gold': {
+    'raws/gold/ore': {
         name: 'gold'
         bulk: 3
     }
@@ -79,6 +79,10 @@ raws = {
 
 # all bulk of 1
 mats = { # requires refinery blueprints - any mat in uses makes 1
+    'mats/fibre': { #output
+        name: 'fibre'
+        uses: {'raws/grasses': 2} # any of these needed to create a bulk of 1
+    }
     'mats/fuel': { #output
         name: 'fuel'
         uses: {'raws/coal': 2, 'raws/oil': 1, 'mats/celulose': 1, 'raws/coal': 1, 'mats/polymer': 3} # any of these needed to create a bulk of 1

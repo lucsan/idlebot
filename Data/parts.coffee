@@ -13,7 +13,7 @@ botrons = {
     }
 }
 modules = {
-    'modules/sensors/sight/basic': {
+    'sensors/sight/basic': {
         name: "Basic Sight"
         #slot: 'frames/sensors'
         gene: 'vision'
@@ -22,41 +22,41 @@ modules = {
         power: 0.2
         uses: {'cpnts/lens/plastic': 1, 'cpnts/curcuit/basic': 1} #combo
     }
-    'modules/sensors/sound': {
+    'sensors/sound': {
         name: "Basic Sound"
         #slot: 'frames/sensors'
         gene: 'audio'
         bulk: 1
         uses: {'cpnts/curcuit/basic': 1, 'cpnts/microphone/basic': 1}
     }
-    'modules/sensors/detect': {
+    'sensors/detect': {
         name: "Basic Metalergy"
         gene: 'detect'
         bulk: 1
         uses: {}
     }
-    'modules/sensors/radar': {
+    'sensors/radar': {
         name: "Basic radar"
         gene: 'radar'
         bulk: 1
         uses: {}
     }
 
-    'modules/armatures/grabber': {
+    'armatures/grabber': {
         name: "Basic grabing arm"
         gene: 'grabber'
         bulk: 1
         uses: {}
     }
 
-    'modules/armatures/mower': {
+    'armatures/mower': {
         name: "Basic mowing arm"
         gene: 'mower'
         bulk: 1
         uses: {}
     }
 
-    'modules/hoppers/general/basic': {
+    'hoppers/general/basic': {
         name: "Basic general purpurse hopper"
         gene: 'hopper'
         bulk: 1
@@ -68,29 +68,29 @@ modules = {
 }
 
 components = { # combos
-    'cpnts/lens/plastic': {
+    'lens/plastic': {
         name: 'plastic lens'
         bulk: 0.5
         uses: {'mats/plastic': 0.5}
     }
-    'cpnts/lens/glass': {
+    'lens/glass': {
         name: 'glass lens'
         bulk: 0.5
         uses: {'mats/glass': 0.5}
     }
-    'cpnts/curcuit/basic': {
+    'curcuit/basic': {
         name: 'basic curcuit'
         desc: ''
         bulk: 0.5
         uses: {'mats/copper': 0.2, 'mats/plastic/1': 0.2, 'mats/gold': 0.1} # all of these needed to create 1 component
     }
-    'cpnts/microphone/basic': {
+    'microphone/basic': {
         name: 'basic microphone'
         desc: ''
         bulk: 0.5
         uses: {'cpnt/wire/copper': 0.2, 'mats/plastic/1': 0.1, 'cpnt/magnet/small': 1} # all of these needed to create 1 component
     }
-    'cpnts/magnet/small': {
+    'magnet/small': {
         name: 'small magnet'
         desc: ''
         bulk: 0.2
@@ -99,7 +99,7 @@ components = { # combos
 }
 
 frames = {
-    'frames/basic': {
+    'basic': {
         name: 'basic frame'
         desc: ''
         uses: {'mats/steel': 10, 'mats/plastic/1': 2} #combo
@@ -114,19 +114,19 @@ frames = {
             commandModules: 1 # tells the robot to consentrate on certain materials
         }
     }
-    'frames/squalid': {
+    'squalid': {
         name: ''
     }
-    'frames/meager': {
+    'meager': {
         name: ''
     }
-    'frames/standard': {
+    'standard': {
         name: "standard"
         sensors: 2
         tractors: 4
         powerUnits: 4
     }
-    'frames/brilliant': {
+    'brilliant': {
         name: ''
     }
 }
@@ -157,7 +157,7 @@ modifyFrames = () =>
 modifyModules = () =>
     for code of modules
         infos = code.split('/')
-        modules[code].slot = 'frames/' + infos[1] + '/' + infos[2]
+        modules[code].slot = infos[0] + '/' + infos[1] + '/' + infos[2]
         modules[code].code = code
         modules[code].quality = 0
         modules[code].health = 100

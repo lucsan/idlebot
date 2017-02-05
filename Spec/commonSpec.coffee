@@ -14,12 +14,12 @@ describe "common include", ->
         expect(plan.code.length).toBeGreaterThan 0
 
     it "can take a variety of blueprints", ->
-        blueprint = parts.frames['frames/basic']
+        blueprint = parts.frames['basic']
         frame = common.newPlan blueprint
         expect(frame.code.length).toBeGreaterThan 0
 
     it "auto generates a name for itself if it dosent have one", ->
-        blueprint = parts.frames['frames/basic']
+        blueprint = parts.frames['basic']
         frame = common.newPlan blueprint
         expect(frame.name).toEqual 'basic frame'
 

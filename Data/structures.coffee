@@ -50,6 +50,10 @@ bays = {
         type: 'equipment'
         capacity: 5 # number of equipment (fab, lab, ref)
     }
+    'general': {
+        type: 'general'
+        capacity: 1 # ?
+    }
 }
 
 modifyBays = =>

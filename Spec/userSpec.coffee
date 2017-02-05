@@ -48,10 +48,10 @@ describe "A user", ->
         expect(player.botrons.length).toEqual 1
 
     it "can save a player botron with modules", ->
-        botron.loadFrame srobo, common.newPlan parts.frames['frames/basic']
-        botron.loadModule srobo, common.newPlan parts.modules['modules/sensors/radar']
+        botron.loadFrame srobo, common.newPlan parts.frames['basic']
+        botron.loadModule srobo, common.newPlan parts.modules['sensors/radar']
         playerData = saveAndLoadPlayer srobo
-        expect(playerData.botrons[0].frame.modules[0].code).toEqual 'modules/sensors/radar'
+        expect(playerData.botrons[0].frame.modules[0].code).toEqual 'sensors/radar'
 
 
 
