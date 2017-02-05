@@ -1,15 +1,29 @@
 equipment = {
-    'equipment/refinery/basic' : {
+    'refinery/basic' : {
 
     }
-    'equipment/robot/command/basic': {
+    'robot/command/basic': {
 
     }
-    'equipment/fabricator/basic': {
+    'fabricator/general/basic': {
 
     }
-    'equipment/Labricator/basic': {
+    'fabricator/lenses/basic': {
 
     }
-    'equipment/conveyor/basic'
+    'labricator/general/basic': {
+
+    }
+    'conveyor/general/basic': {
+
+    }
+    'hopper/general/basic': {
+
+    }
+    'hopper/raws/basic': {
+
+    }
+    'hopper/mats/basic': {
+        
+    }
 }

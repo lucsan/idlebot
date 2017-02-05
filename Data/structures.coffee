@@ -1,12 +1,12 @@
 compounds = {
-    'compounds/basic': {
+    'basic': {
         name: 'Compound Zefnot'
     }
 
 }
 
 buildings = {
-    'structures/buildings/shed/command': {
+    'shed/command': {
         name: 'command shed'
         max: {
             bays: 10
@@ -20,7 +20,7 @@ buildings = {
         bays: []
 
     }
-    'structures/buildings/shed/basic': {
+    'shed/basic': {
         name: 'basic shed'
         max: {
             bays: 10
@@ -30,23 +30,23 @@ buildings = {
 }
 
 bays = {
-    'structures/shed/bay/recharge': {
+    'recharge': {
         type: 'recharge'
         capacity: 1 # number of botrons on charge at this unit
     }
-    'structures/shed/bay/storage': {
+    'storage': {
         type: 'storage'
         capacity: 1000 # number of bulk can contain
     }
-    'structures/shed/bay/loading': {
+    'loading': {
         type: 'loading'
         capacity: 1 # number ofbotrons
     }
-    'structures/shed/bay/equipment': {
+    'equipment': {
         type: 'equipment'
         capacity: 5 # number of equipment (fab, lab, ref)
     }
-    'structures/shed/bay/command': {
+    'command': {
         type: 'equipment'
         capacity: 5 # number of equipment (fab, lab, ref)
     }

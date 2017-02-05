@@ -9,7 +9,7 @@ describe "common include", ->
     beforeEach ->
 
     it "has a plan object for blueprints", ->
-        blueprint = structures.buildings['structures/buildings/shed/basic']
+        blueprint = structures.buildings['shed/basic']
         plan = common.newPlan blueprint
         expect(plan.code.length).toBeGreaterThan 0
 
@@ -23,7 +23,7 @@ describe "common include", ->
         frame = common.newPlan blueprint
         expect(frame.name).toEqual 'basic frame'
 
-        blueprint = structures.bays['structures/shed/bay/recharge']
+        blueprint = structures.bays['recharge']
         bay = common.newPlan blueprint
         expect(bay.name.length).toEqual 6
 
