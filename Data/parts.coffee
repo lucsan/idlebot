@@ -1,88 +1,96 @@
+# Domain - part, resources
+# kingdom - module, frame, component, raws
+# phylum - sensors, grabbers, lenses, curcuits, grasses, woods
+# family - visual, radar, plastic, glass, bush, clump, tree, rock
+# genus - basic, standard, brilliant
+# species -
+
 botrons = {
-    'parts/botron' : {
+    'botron' : {
         position: [0,0,0]
         state: 'off'
         delay: 1
     }
 }
 modules = {
-    'parts/modules/sensors/sight/basic': {
+    'modules/sensors/sight/basic': {
         name: "Basic Sight"
         #slot: 'frames/sensors'
         gene: 'vision'
         bulk: 1
         range: 10
         power: 0.2
-        uses: {'parts/cpnt/lens/plastic': 1, 'parts/cpnt/curcuit/basic': 1} #combo
+        uses: {'cpnts/lens/plastic': 1, 'cpnts/curcuit/basic': 1} #combo
     }
-    'parts/modules/sensors/sound': {
+    'modules/sensors/sound': {
         name: "Basic Sound"
         #slot: 'frames/sensors'
         gene: 'audio'
         bulk: 1
-        uses: {'cpnt/curcuit/basic': 1, 'cpnt/microphone/basic': 1}
+        uses: {'cpnts/curcuit/basic': 1, 'cpnts/microphone/basic': 1}
     }
-    'parts/modules/sensors/detect': {
+    'modules/sensors/detect': {
         name: "Basic Metalergy"
         gene: 'detect'
         bulk: 1
         uses: {}
     }
-    'parts/modules/sensors/radar': {
+    'modules/sensors/radar': {
         name: "Basic radar"
         gene: 'radar'
         bulk: 1
         uses: {}
     }
 
-    'parts/modules/armatures/grabber': {
+    'modules/armatures/grabber': {
         name: "Basic grabing arm"
         gene: 'grabber'
         bulk: 1
         uses: {}
     }
 
-    'parts/modules/armatures/mower': {
+    'modules/armatures/mower': {
         name: "Basic mowing arm"
         gene: 'mower'
         bulk: 1
         uses: {}
     }
 
-    'parts/modules/hopper/basic/general': {
+    'modules/hoppers/general/basic': {
         name: "Basic general purpurse hopper"
-        gene: 'general'
+        gene: 'hopper'
         bulk: 1
         uses: {'mats/iron': 1}
         capacity: 10
         contains: []
+        carrying: 0
     }
 }
 
 components = { # combos
-    'parts/cpnt/lens/plastic': {
+    'cpnts/lens/plastic': {
         name: 'plastic lens'
         bulk: 0.5
         uses: {'mats/plastic': 0.5}
     }
-    'parts/cpnt/lens/glass': {
+    'cpnts/lens/glass': {
         name: 'glass lens'
         bulk: 0.5
         uses: {'mats/glass': 0.5}
     }
-    'parts/cpnt/curcuit/basic': {
+    'cpnts/curcuit/basic': {
         name: 'basic curcuit'
         desc: ''
         bulk: 0.5
         uses: {'mats/copper': 0.2, 'mats/plastic/1': 0.2, 'mats/gold': 0.1} # all of these needed to create 1 component
     }
-    'cpnt/microphone/basic': {
+    'cpnts/microphone/basic': {
         name: 'basic microphone'
         desc: ''
         bulk: 0.5
         uses: {'cpnt/wire/copper': 0.2, 'mats/plastic/1': 0.1, 'cpnt/magnet/small': 1} # all of these needed to create 1 component
     }
-    'cpnt/magnet/small': {
+    'cpnts/magnet/small': {
         name: 'small magnet'
         desc: ''
         bulk: 0.2
@@ -91,7 +99,7 @@ components = { # combos
 }
 
 frames = {
-    'parts/frames/basic': {
+    'frames/basic': {
         name: 'basic frame'
         desc: ''
         uses: {'mats/steel': 10, 'mats/plastic/1': 2} #combo
@@ -106,19 +114,19 @@ frames = {
             commandModules: 1 # tells the robot to consentrate on certain materials
         }
     }
-    'parts/frames/squalid': {
+    'frames/squalid': {
         name: ''
     }
-    'parts/frames/meager': {
+    'frames/meager': {
         name: ''
     }
-    'parts/frames/standard': {
+    'frames/standard': {
         name: "standard"
         sensors: 2
         tractors: 4
         powerUnits: 4
     }
-    'parts/frames/brilliant': {
+    'frames/brilliant': {
         name: ''
     }
 }
@@ -149,7 +157,7 @@ modifyFrames = () =>
 modifyModules = () =>
     for code of modules
         infos = code.split('/')
-        modules[code].slot = 'frame/' + infos[1] + '/' + infos[2]
+        modules[code].slot = 'frames/' + infos[1] + '/' + infos[2]
         modules[code].code = code
         modules[code].quality = 0
         modules[code].health = 100

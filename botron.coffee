@@ -1,11 +1,11 @@
+
 module.exports.loadFrame = (botron, frame) =>
     botron.frame = frame
     botron.frame.modules = []
 
 module.exports.loadModule = (botron, botronModule) =>
     slotCode = botronModule.slot.split('/')
-    modSlot = slotCode[slotCode.length - 1]
-    max = botron.frame.max[modSlot]
+    max = botron.frame.max[slotCode[1]]
     counter = 0
     counter++ for i, module of botron.frame.modules when module.slot is botronModule.slot
     if counter >= max then return
@@ -13,7 +13,8 @@ module.exports.loadModule = (botron, botronModule) =>
 
 module.exports.scan = (botron, rawResourcesList) ->
     return [] if botron.frame.modules.length < 1
-    sensors = canThing(botron, 'frame/modules/sensors')
+    sensors = getModulesByType botron, 'modules/sensors'
+    #console.log sensors
     return [] if sensors.length < 1
     # check environmental availability (not yet implemented)
     # calculate what it can see for each sensors
@@ -38,15 +39,17 @@ doScan = (sensor, raws, @foundResources, botron) =>
                     #process.logger.info botron.name + ' scanned - ' + raws[code].scan[type] + ' ' +  code
     return @foundResources
 
-canThing = (botron, moduleCode) =>
+getModulesByType = (botron, moduleCode) =>
+    codes = moduleCode.split('/')
     a = []
-    for i, modules of botron.frame.modules when modules.slot == moduleCode
-        a.push modules
+    for i, modules of botron.frame.modules
+        slots = modules.slot.split('/');
+        a.push modules if codes[1] == slots[1]
     return a
 
 module.exports.harvest = (botron, scanedResources) =>
     return [] if botron.frame.modules.length < 1
-    armatures = canThing(botron, 'frame/modules/armatures')
+    armatures = getModulesByType botron, 'modules/armatures'
     return [] if armatures.length < 1
     harvestedResources = []
 
@@ -57,7 +60,6 @@ module.exports.harvest = (botron, scanedResources) =>
                     if arm.gene == tool
                         harvest = []
                         harvest.code = scanedResources[i].code
-                        #harvest.scanedResources = scanedResources[i]
                         harvest.toolUsed = tool
                         harvestPercent = scanedResources[i].tools[tool]
                         harvest.harvestPercent = harvestPercent
@@ -67,7 +69,20 @@ module.exports.harvest = (botron, scanedResources) =>
                         harvestedResources.push harvest
     return harvestedResources
 
+module.exports.loadHopper = (botron, foundResources) =>
+    return if botron.frame.modules.length < 1
+    hoppers = getModulesByType botron, 'modules/hoppers'
+    return if hoppers.length < 1
+    for i, hopper of hoppers
+        for j, resource of foundResources
+            break if (hopper.carrying + resource.harvestAmount) > hopper.capacity
+            hopper.contains.push resource
+            hopper.carrying += resource.harvestAmount
 
+
+
+# module.exports.getModule = (botron, moduleCode) =>
+#     console.log botron.frame.modules
 
 
 module.exports.info = (botron) =>
