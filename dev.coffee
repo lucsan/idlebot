@@ -13,6 +13,7 @@ One::getStuff = =>
     @stuff
 
 console.log One
+console.log 'twoxxx'
 
 eno = new One()
 eno.thing 'grass'
